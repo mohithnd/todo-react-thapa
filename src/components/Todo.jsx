@@ -2,9 +2,12 @@ import { useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoDate from "./TodoDate";
+import { getLocalStorageTodo } from "./TodoLocalStorage";
 
 const Todo = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    return getLocalStorageTodo();
+  });
 
   return (
     <div className="bg-white bg-opacity-30 backdrop-blur-md p-6 rounded-lg shadow-lg max-w-md w-full">

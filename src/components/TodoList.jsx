@@ -1,24 +1,28 @@
 import { MdCheck, MdDeleteForever } from "react-icons/md";
+import { setLocalStorageTodo } from "./TodoLocalStorage";
 
 const TodoList = ({ todos, setTodos }) => {
   const handleClearAll = () => {
     if (window.confirm("Are you sure you want to clear all tasks?")) {
       setTodos([]);
+      setLocalStorageTodo([]);
     }
   };
 
   const handleDeleteTodo = (id) => {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      setTodos((prev) => prev.filter((t) => t.id !== id));
+      const updatedTodos = todos.filter((t) => t.id !== id);
+      setTodos(updatedTodos);
+      setLocalStorageTodo(updatedTodos);
     }
   };
 
   const handleCheckTodo = (id) => {
-    setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
-      )
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
     );
+    setTodos(updatedTodos);
+    setLocalStorageTodo(updatedTodos);
   };
 
   return (

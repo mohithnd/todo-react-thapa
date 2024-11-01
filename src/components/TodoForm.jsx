@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { setLocalStorageTodo } from "./TodoLocalStorage";
 
 const TodoForm = ({ todos, setTodos }) => {
   const [inputValue, setInputValue] = useState("");
@@ -11,10 +12,12 @@ const TodoForm = ({ todos, setTodos }) => {
       setInputValue("");
       return;
     }
-    setTodos([
+    const updatedTodos = [
       ...todos,
       { id: uuidv4(), content: trimmedValue, checked: false },
-    ]);
+    ];
+    setTodos(updatedTodos);
+    setLocalStorageTodo(updatedTodos);
     setInputValue("");
   };
 
