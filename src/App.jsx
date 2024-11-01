@@ -6,7 +6,7 @@ const App = () => {
       <header className="bg-opacity-80 backdrop-blur-md text-white p-6 text-center shadow-lg">
         <h1 className="text-4xl font-bold">My Todo Application</h1>
       </header>
-      <main className="flex-grow flex items-center justify-center">
+      <main className="flex-grow flex items-center justify-center p-4">
         <Todo />
       </main>
       <footer className="bg-opacity-80 backdrop-blur-md text-white text-center p-4 shadow-inner">

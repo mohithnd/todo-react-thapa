@@ -4,12 +4,9 @@ const TodoDate = () => {
   const [dateAndTime, setDateAndTime] = useState("");
 
   useEffect(() => {
-    setDateAndTime(getFormattedDate());
-
-    const intervalId = setInterval(() => {
-      setDateAndTime(getFormattedDate());
-    }, 1000);
-
+    const updateDateAndTime = () => setDateAndTime(getFormattedDate());
+    updateDateAndTime();
+    const intervalId = setInterval(updateDateAndTime, 1000);
     return () => clearInterval(intervalId);
   }, []);
 
