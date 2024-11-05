@@ -26,43 +26,40 @@ const TodoList = ({ todos, setTodos }) => {
   };
 
   return (
-    <>
+    <div>
       {todos.length === 0 ? (
-        <p className="text-center text-gray-500">No Todos Yet.</p>
+        <p className="text-gray-500">No Todos Yet.</p>
       ) : (
         <div>
-          <ul className="divide-y divide-gray-300">
+          <ul className="space-y-2">
             {todos.map((todo) => (
               <li
                 key={todo.id}
-                className="flex items-center justify-between p-4 hover:bg-gray-100 transition duration-150"
+                className={`flex justify-between items-center p-2 border-b ${
+                  todo.checked ? "bg-green-100" : "bg-white"
+                }`}
               >
                 <span
-                  className={`flex-grow text-gray-800 ${
+                  className={`${
                     todo.checked ? "line-through text-gray-400" : ""
                   }`}
-                  aria-label={
-                    todo.checked ? "Completed task" : "Incomplete task"
-                  }
                 >
                   {todo.content}
                 </span>
-                <div className="flex space-x-3">
+                <div className="flex space-x-2">
                   <button
-                    className="text-green-500 hover:text-green-600 transition duration-200"
-                    aria-label={`Mark ${
-                      todo.checked ? "incomplete" : "complete"
-                    }: ${todo.content}`}
                     onClick={() => handleCheckTodo(todo.id)}
+                    className={`p-1 rounded ${
+                      todo.checked ? "bg-yellow-300" : "bg-green-300"
+                    } hover:bg-opacity-80`}
                   >
-                    <MdCheck size={24} />
+                    <MdCheck size={20} />
                   </button>
                   <button
-                    className="text-red-500 hover:text-red-600 transition duration-200"
-                    aria-label={`Delete task: ${todo.content}`}
                     onClick={() => handleDeleteTodo(todo.id)}
+                    className="p-1 bg-red-500 text-white rounded hover:bg-red-600"
                   >
-                    <MdDeleteForever size={24} />
+                    <MdDeleteForever size={20} />
                   </button>
                 </div>
               </li>
@@ -71,17 +68,15 @@ const TodoList = ({ todos, setTodos }) => {
           <button
             onClick={handleClearAll}
             disabled={todos.length === 0}
-            className={`mt-4 w-full py-2 rounded-md transition duration-200 ${
-              todos.length === 0
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-red-500 text-white hover:bg-red-600"
-            }`}
+            className={`mt-4 w-full p-2 rounded ${
+              todos.length === 0 ? "bg-gray-300" : "bg-red-500 hover:bg-red-600"
+            } transition duration-200`}
           >
             Clear All
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

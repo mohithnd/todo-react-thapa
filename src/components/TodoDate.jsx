@@ -15,7 +15,7 @@ const TodoDate = () => {
     return `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`;
   };
 
-  return <div className="text-center text-gray-600 mb-4">{dateAndTime}</div>;
+  return <div className="text-gray-600 mb-4">{dateAndTime}</div>;
 };
 
 export default TodoDate;

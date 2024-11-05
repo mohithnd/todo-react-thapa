@@ -22,20 +22,18 @@ const TodoForm = ({ todos, setTodos }) => {
   };
 
   return (
-    <form className="flex mb-6" onSubmit={handleAddTask}>
+    <form onSubmit={handleAddTask} className="mb-4 flex">
       <input
         type="text"
         autoComplete="off"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
         placeholder="Add a new task"
-        aria-label="New task input"
+        className="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring focus:ring-blue-500"
       />
       <button
         type="submit"
-        className="p-3 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 transition duration-200"
-        aria-label="Add task"
+        className="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600 transition duration-200"
       >
         Add Task
       </button>
